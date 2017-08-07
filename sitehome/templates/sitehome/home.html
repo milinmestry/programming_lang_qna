@@ -1,0 +1,30 @@
+{% extends 'base/layout.html' %}
+
+{% block content %}
+<!-- {{ proglangList }} -->
+
+  <div class="fl w-100">
+  {% if proglangList %}
+    {% for item in proglangList %}
+    <article class="mw5 bg-white br3 pa3 pa4-ns mv3 ba b--black-10 fl mr3">
+      <div class="tc">
+        {% if item.icon_url != None %}
+          <img src="{{ item.icon_url }}" class="br-100 h3 w3 dib" title="{{ item.programming_lang }}">
+        {% else %}
+          <img src="http://placehold.it/100&text=NA" class="br-100 h3 w3 dib" title="Missing Icon">
+        {% endif %}
+        <h2 class="f4">{{ item.programming_lang }}</h2>
+        <hr class="mw3 bb bw1 b--black-10">
+      </div>
+      <p class="lh-copy measure center f6 black-70">
+        Quite affectionate and outgoing.
+        She loves to get chin scratches and will
+        roll around on the floor waiting for you give her more of them.
+      </p>
+    </article>
+    {% endfor %}
+  {% else %}
+      <p>No Programming Languages are added.</p>
+  {% endif %}
+  </div>
+{% endblock %}
