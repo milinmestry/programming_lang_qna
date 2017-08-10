@@ -1,4 +1,5 @@
 from django.db import models
+from programming_languages.models import ProgrammingLanguage
 
 # Create your models here.
 class Question(models.Model):
@@ -13,7 +14,7 @@ class Question(models.Model):
     )
 
     programming_language = models.ForeignKey(ProgrammingLanguage, on_delete=models.PROTECT)
-    question_type = models.CharField(choices=QUESTION_TYPE_CHOICES, default=SUBJECTIVE)
+    question_type = models.CharField(max_length=20, choices=QUESTION_TYPE_CHOICES, default=SUBJECTIVE)
     question_text = models.CharField(max_length=750)
     candidate_experienced = models.PositiveSmallIntegerField()
     is_active = models.BooleanField(blank=True)

@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sitehome',
-    'programming_languages'
+    'programming_languages',
+    'questions_answers',
     # 'programming_languages.apps.ProgrammingLanguagesConfig'
 ]
 
