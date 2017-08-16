@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import Question, QuestionAnswer, QuestionChoice
-from .forms import QuestionForm, QuestionAnswerForm
+from .models import Question, QuestionChoice
+from .forms import QuestionForm
 
 # Register your models here.
 
@@ -13,18 +13,22 @@ class QuestionChoiceInline(admin.TabularInline):
 # class QuestionChoiceAdmin(admin.ModelAdmin):
 #     fields = ['question_choice_text']
 
-class QuestionAnswerInline(admin.StackedInline):
-    form = QuestionAnswerForm
-    fields = ['subjective_answer', 'answer_keywords']
-    model = QuestionAnswer
-    extra = 1
-
-
 class QuestionAdmin(admin.ModelAdmin):
     form = QuestionForm
-    fields = ['programming_language', 'question_type', 'question_text'
-        , 'candidate_experienced', 'is_active']
-    inlines = [QuestionChoiceInline, QuestionAnswerInline]
+    # fields = ['programming_language', 'question_type', 'question_text'
+    #     , 'subjective_answer', 'answer_keywords'
+    #     , 'candidate_experienced', 'is_active']
+    fieldsets = (
+        (None, {
+            'fields' : ['programming_language', 'candidate_experienced'
+                , 'question_type', 'question_text']
+        }),
+        ('Subjective Answer Details', {
+            'fields' : ['subjective_answer', 'answer_keywords']
+        }),
+    )
+    inlines = [QuestionChoiceInline]
+    list_filter = ['question_type', ]
 
 
 # admin.site.register(Question)

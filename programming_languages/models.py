@@ -18,3 +18,6 @@ class ProgrammingLanguage(models.Model):
 
     def __str__(self):
         return self.programming_lang
+
+    class Meta:
+        db_table = 'programming_languages'
