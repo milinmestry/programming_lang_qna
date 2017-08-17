@@ -7,6 +7,7 @@ from .forms import QuestionForm
 
 class QuestionChoiceInline(admin.TabularInline):
     fields = ['question_choice_text']
+    classes = ('hide', )
     model = QuestionChoice
     extra = 4
 
@@ -21,14 +22,17 @@ class QuestionAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields' : ['programming_language', 'candidate_experienced'
-                , 'question_type', 'question_text']
+                , 'question_text', 'question_type']
         }),
         ('Subjective Answer Details', {
+            'classes': ('subjective-answer',),
             'fields' : ['subjective_answer', 'answer_keywords']
         }),
     )
     inlines = [QuestionChoiceInline]
-    list_filter = ['question_type', ]
+
+    class Media:
+        js = ("questions_answers/js/admin/first.js", )
 
 
 # admin.site.register(Question)
