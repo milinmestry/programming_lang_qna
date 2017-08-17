@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.utils import timezone
+
 
 from .models import Question, QuestionChoice
 from .forms import QuestionForm
@@ -7,7 +9,6 @@ from .forms import QuestionForm
 
 class QuestionChoiceInline(admin.TabularInline):
     fields = ['question_choice_text']
-    classes = ('hide', )
     model = QuestionChoice
     extra = 4
 
@@ -30,6 +31,11 @@ class QuestionAdmin(admin.ModelAdmin):
         }),
     )
     inlines = [QuestionChoiceInline]
+
+    def save_model(self, request, obj, form, change):
+        obj.added_by = request.user
+        obj.added_on = timezone.now()
+        super().save_model(request, obj, form, change)
 
     class Media:
         js = ("questions_answers/js/admin/first.js", )
