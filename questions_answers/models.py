@@ -42,6 +42,7 @@ class QuestionChoice(models.Model):
     """
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     question_choice_text = models.CharField(max_length=500, null=True)
+    choice_answer = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     added_by = models.CharField(max_length=100, blank=True)
     added_on = models.DateTimeField(blank=True)
