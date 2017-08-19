@@ -40,8 +40,9 @@ class QuestionAdmin(admin.ModelAdmin):
     inlines = [QuestionChoiceInline]
 
     def save_model(self, request, obj, form, change):
-        print(obj)
-
+        # print(obj)
+        # https://stackoverflow.com/questions/42814040/how-to-get-all-related-objects-in-django-model-foreignkey-and-onetoonefield
+        # https://stackoverflow.com/questions/307038/django-foreign-key-access-in-save-function
         obj.added_by = request.user
         obj.added_on = timezone.now()
         super().save_model(request, obj, form, change)
