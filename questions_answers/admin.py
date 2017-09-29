@@ -6,7 +6,7 @@ from django.forms.models import BaseInlineFormSet
 from .models import Question, QuestionChoice
 from .forms import QuestionForm
 
-from django.http import HttpResponse #temp
+# from django.http import HttpResponse #temp
 
 # Register your models here.
 
@@ -40,7 +40,8 @@ class QuestionAdmin(admin.ModelAdmin):
     inlines = [QuestionChoiceInline]
 
     def save_model(self, request, obj, form, change):
-        obj.added_by = request.user
+        # print(request.user)
+        # obj.added_by = request.user
         obj.added_on = timezone.now()
         super().save_model(request, obj, form, change)
 
