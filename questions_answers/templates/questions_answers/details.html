@@ -1,0 +1,23 @@
+{% extends 'base/layout.html' %}
+
+{% block content %}
+  <!-- <h3>Question details</h3> -->
+  <!-- {{ question_list.query }} -->
+  <article class="pa3 pa5-ns" data-name="slab-stat-large">
+    <h3 class="f6 ttu tracked">LANG</h3>
+    <div class="cf">
+
+  {% if question_list %}
+    {% for q in question_list %}
+      <dl class="db dib-l w-auto-l lh-title mr6-l">
+        <dd class="f6 fw4 ml0">{{ q.question_type }}</dd>
+        <dd class="f2 f-subheadline-l fw6 ml0">{{ q.question_type_count }}</dd>
+      </dl>
+    {% endfor %}
+  {% else %}
+      <p>No Question/answer is added.</p>
+  {% endif %}
+    </div>
+  </article>
+{% endblock %}
+

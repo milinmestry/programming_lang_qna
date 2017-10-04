@@ -1,7 +1,7 @@
 {% extends 'base/layout.html' %}
 
 {% block content %}
-{{ proglangList.query }}
+<!-- {{ proglangList.query }} -->
 
   <div class="fl w-100">
   {% if proglangList %}
@@ -24,21 +24,15 @@
       <li
         class="flex items-center lh-copy pa3 ph0-l bb b--black-10">
           <div class="pl3 flex-auto">
-            <span class="f5 db black-70">Objective</span>
+            <span class="f5 db black-70">Total Questions</span>
           </div>
-          <div>100</div>
-      </li>
-      <li
-        class="flex items-center lh-copy pa3 ph0-l bb b--black-10">
-          <div class="pl3 flex-auto">
-            <span class="f5 db black-70">Subjective</span>
-          </div>
-          <div>100</div>
+          <div>{{ item.question_type_count }}</div>
       </li>
     </ul>
     <div class="tc">
       <a class="f6 link dim br3 ph3 pv2 mb2 dib white bg-mid-gray"
-        href="{% url 'programming_languages:details' item.id %}">View</a>
+        href="{% url 'qa_url:details' item.id %}">View</a>
+        <!-- href="{% url 'programming_languages:details' item.id %}">View</a> -->
     </div>
     </article>
     {% endfor %}

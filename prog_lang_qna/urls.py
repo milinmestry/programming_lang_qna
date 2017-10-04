@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('sitehome.urls')),
     url(r'^prog-lang/', include('programming_languages.urls')),
+    url(r'^q-a/', include('questions_answers.urls')),
 ]

@@ -18,12 +18,12 @@ from questions_answers.models import Question
 # ORDER BY a.`programming_lang`;
 
 def home(request):
-    # active_proglang = ProgrammingLanguage.objects.filter(is_active = 1) \
-    # .annotate(question_type_count = Count('question__question_type')) \
+    active_proglang = ProgrammingLanguage.objects.filter(is_active = 1) \
+        .annotate(question_type_count = Count('question__question_type')) \
     # .values('question__question_type') \
 
-    active_proglang = Question.objects.filter(programming_language__is_active = 1) \
-        .annotate(question_type_count = Count('programming_language__programming_lang'))
+    # active_proglang = Question.objects.filter(programming_language__is_active = 1) \
+    #     .annotate(question_type_count = Count('programming_language__programming_lang'))
         # .values('programming_language__programming_lang', 'question_type') \
 
     # print(active_proglang)
